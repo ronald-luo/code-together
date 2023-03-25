@@ -9,10 +9,10 @@ const OutputConsole = ({ codeOutput, onSubmit }) => {
   };
 
   return (
-    <div className="bg-gray-800 p-4 flex flex-col justify-start items-start">
-      <label className="text-gray-400 mb-2">Output:</label>
+    <div className="bg-white-200 p-4 flex flex-col justify-start items-start">
+      <label className="text-black-400 font-medium mb-2">Stdout:</label>
       <textarea
-        className="w-full h-32 bg-gray-700 text-white p-2 mb-4"
+        className="w-full h-32 bg-slate-100 text-black focus:outline-none rounded p-2 mb-4"
         value={codeOutput}
         readOnly
       />

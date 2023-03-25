@@ -33,7 +33,7 @@ const Header = () => {
           Invite
         </div>
 
-        <div className="rounded-md border-2 py-1 text-sm px-3 font-medium border-b-gray-100">
+        <div className="rounded-md border-2 py-1 text-sm px-3 font-medium border-gray-300">
           28:12
         </div>
 
