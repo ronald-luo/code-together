@@ -11,6 +11,7 @@ Navigate to http://localhost:3000 in your web browser to see the app running.
 ## Project Structure
 This project is built with Next.js and PrismatDB. The project structure is as follows:
 
+```
 .
 ├── data
 │   └── questions.json
@@ -30,6 +31,7 @@ This project is built with Next.js and PrismatDB. The project structure is as fo
 ├── README.md
 ├── package.json
 └── package-lock.json
+```
 
 The data directory contains a JSON file with sample questions data.
 The pages directory contains Next.js pages, including the home page (index.tsx), room pages (room/[id].tsx), and an API route for getting questions data (api/questions.ts).
