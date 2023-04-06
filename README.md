@@ -3,9 +3,20 @@
 ## Getting Started
 To run the project locally, you'll need to have Node.js and npm installed. Once you have those installed, you can follow these steps:
 
-Clone this repository to your local machine using git clone https://github.com/your-username/code-together.git.
+Clone this repository to your local machine using 
+
+```
+git clone https://github.com/your-username/code-together.git
+```
+
 Navigate to the project directory and run npm install to install the project's dependencies.
-Start the development server with npm run dev.
+
+Start the development server with 
+
+```
+npm run dev
+```
+
 Navigate to http://localhost:3000 in your web browser to see the app running.
 
 ## Project Structure
