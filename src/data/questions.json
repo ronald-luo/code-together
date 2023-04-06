@@ -1,0 +1,54 @@
+[
+    {
+      "id": 1,
+      "title": "Two Sum",
+      "description": "Given an array of integers, find two numbers such that they add up to a specific target.",
+      "difficulty": "Easy",
+      "inputFormat": "The first line contains an integer n, representing the size of the array. The second line contains n integers, representing the elements of the array. The third line contains an integer target.",
+      "outputFormat": "Print the indices of the two numbers (0-indexed) such that they add up to the target, separated by a space.",
+      "inputExample": "4\n2 7 11 15\n9\n",
+      "outputExample": "0 1\n",
+      "constraints": "2 ≤ n ≤ 10^5\n-10^9 ≤ nums[i] ≤ 10^9\n-10^9 ≤ target ≤ 10^9\nThe solution must be unique, and you cannot use the same element twice.",
+      "createdAt": "2022-04-05T10:00:00Z",
+      "updatedAt": "2022-04-05T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Add Two Numbers",
+      "description": "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.",
+      "difficulty": "Medium",
+      "inputFormat": "The input consists of two non-empty linked lists. The first line contains the number of nodes in the first linked list. The following lines contain the values of the nodes, in reverse order. The second line contains the number of nodes in the second linked list. The following lines contain the values of the nodes, in reverse order.",
+      "outputFormat": "Return the sum as a linked list, with the digits in reverse order.",
+      "inputExample": "3\n2 4 3\n3\n5 6 4\n",
+      "outputExample": "8 0 7\n",
+      "constraints": "The input lists are guaranteed not to have any leading zero, except the number 0 itself.",
+      "createdAt": "2022-04-06T08:00:00Z",
+      "updatedAt": "2022-04-06T08:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Longest Substring Without Repeating Characters",
+      "description": "Given a string s, find the length of the longest substring without repeating characters.",
+      "difficulty": "Medium",
+      "inputFormat": "The input string s consists of printable ASCII characters.",
+      "outputFormat": "Return the length of the longest substring without repeating characters.",
+      "inputExample": "\"abcabcbb\"\n",
+      "outputExample": "3\n",
+      "constraints": "0 ≤ s.length ≤ 5 * 10^4\ns consists of printable ASCII characters.",
+      "createdAt": "2022-04-07T09:00:00Z",
+      "updatedAt": "2022-04-07T09:30:00Z"
+    },
+    {
+        "id": 4,
+        "title": "3Sum",
+        "description": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i ≠ j, i ≠ k, and j",
+        "difficulty": "Hard",
+        "inputFormat": "The first line contains an integer n, representing the size of the array. The second line contains n integers, representing the elements of the array.",
+        "outputFormat": "Return a list of all the unique triplets [nums[i], nums[j], nums[k]] such that i ≠ j, i ≠ k, and j < k, and nums[i] + nums[j] + nums[k] = 0.",
+        "inputExample": "6\n-1 0 1 2 -1 -4\n",
+        "outputExample": "[[-1,-1,2],[-1,0,1]]\n",
+        "constraints": "0 ≤ nums.length ≤ 3000\n-10^5 ≤ nums[i] ≤ 10^5",
+        "createdAt": "2022-04-08T11:00:00Z",
+        "updatedAt": "2022-04-08T11:30:00Z"
+    }
+]

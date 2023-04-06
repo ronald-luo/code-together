@@ -1,11 +1,17 @@
 import React from 'react';
-import BackArrow from './svgs/BackArrow';
+
+// mui icons
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import TimerIcon from '@mui/icons-material/Timer';
+import IconButton from '@mui/material/IconButton';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const Header = () => {
   return (
     <header className="flex px-2 sm:px-4 lg:px-4 max-h-20 bg-white-800 py-3 justify-between border-b border-b-gray-200">
-
-        {/* <BackArrow className="w-15 h-15 hover:cursor-pointer my-auto fill-zinc-400"/> */}
+        <IconButton>
+          <KeyboardBackspaceIcon/>
+        </IconButton>
 
         <h1 className="text-xl font-bold text-slate-800 mr-5 my-auto">
           Array of Hope
@@ -33,10 +39,15 @@ const Header = () => {
           Invite
         </div>
 
-        <div className="rounded-md border-2 py-1 text-sm px-3 font-medium border-gray-300">
+        <div className="rounded-md border-2 py-2 text-sm px-3 font-medium border-gray-300">
+          <TimerIcon style={{ color: '#6b7280'}}/>
           28:12
         </div>
 
+        <IconButton>
+          <MoreVertIcon className="self-center"/>
+        </IconButton>
+        
     </header>
   );
 };
