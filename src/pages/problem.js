@@ -10,6 +10,7 @@ import DifficultyChip from '../../components/DifficultyChip';
 // mui components
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import Skeleton from '@mui/material/Skeleton';
 
 // mui icons
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -17,7 +18,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import ShareIcon from '@mui/icons-material/Share';
 import FlagIcon from '@mui/icons-material/Flag';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import SendIcon from '@mui/icons-material/Send';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
@@ -25,17 +26,20 @@ import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 export default function ProblemPage() {
   const router = useRouter();
 
+  const [loading, setLoading] = useState(true);
   const [code, setCode] = useState('');
   const [codeOutput, setCodeOutput] = useState('');
   const [language, setLanguage] = useState('python'); // default value is Python
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+
   useEffect(() => {
     async function fetchData() {
       const res = await fetch('/api/questions');
       const data = await res.json();
       setQuestions(data);
+      setLoading(false);
     }
     fetchData();
   }, []);
@@ -83,14 +87,14 @@ export default function ProblemPage() {
   };
 
   return (
-      <div className="flex h-full w-full">
+      <div className="flex h-full w-full" data-id="problem-page">
         <LeftSidebar data-id="problem-left-sidebar"></LeftSidebar>
          
-        <div className="flex flex-col h-full w-full" data-id="problem-middle-section">
+        <div className="flex flex-col h-full w-full" data-id="problem-middle-section" >
           <Header></Header>
 
           <div className="flex h-full" data-id="problem-screen-split-container">
-            <div className="border-r border-r-gray-200 w-full" data-id="problem-left-screen">
+            <div className="border-r border-r-gray-200 max-w-full" data-id="problem-left-screen">
               <div className="flex border-b py-3 border-b-gray-200" data-id="problem-tab-selector">
                 <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 hover:opacity-100">
                   Problem
@@ -104,8 +108,9 @@ export default function ProblemPage() {
               </div>
 
               <div className="px-3 pt-3" data-id="problem-information-container">
+                  {loading ? (<Skeleton className="mb-2" width="90%"  animation="wave"/>) :
                   <div className="flex flex-rows" data-id="problem-title-container">
-                      <h2 className="text-xl font-bold mb-2" data-id="problem-title">
+                      <h2 className="text-xl font-bold mb-2 truncate max-w-l" data-id="problem-title">
                         {questions[currentQuestionIndex]?.title}
                       </h2>
 
@@ -117,7 +122,7 @@ export default function ProblemPage() {
                       <p className="font-medium text-sm text-slate-500 mb-2 self-center ml-auto" data-id="problem-count">
                         Problem {currentQuestionIndex + 1}/4
                       </p>
-                  </div>
+                  </div>}
 
                   <div className="flex justify-between pr-2 whitespace-nowrap" data-id="problem-icons-container">
                       <div>
@@ -136,17 +141,29 @@ export default function ProblemPage() {
                       </div>
 
                       <div data-id="problem-selector">
-                        <IconButton size="small" onClick={handlePrevQuestion}>
-                          <ArrowBackIosIcon fontSize="inherit" style={{fill: '#94a3b8'}}/>
-                        </IconButton>
+                        <div className="border border-slate-200 mx-2 inline-block rounded">
+                          <IconButton size="small" onClick={handlePrevQuestion}>
+                            <ArrowBackIosNewIcon fontSize="inherit" style={{fill: '#94a3b8'}}/>
+                          </IconButton>
+                        </div>
+                        
+                          <div className="border border-slate-200 mx-2 inline-block rounded">
                         <IconButton size="small" onClick={handleNextQuestion}>
                           <ArrowForwardIosIcon fontSize="inherit" style={{fill: '#94a3b8'}}/>
                         </IconButton>
+                        </div>
                       </div>
                   </div>
 
                   <p className="text-gray-700 mt-4" data-id="problem-description">
-                    {questions[currentQuestionIndex]?.description}
+                    {loading ? 
+                    (<React.Fragment>
+                      <Skeleton animation="wave" height={15} style={{ marginBottom: 6 }} />
+                      <Skeleton animation="wave" height={15} style={{ marginBottom: 6 }} />
+                      <Skeleton animation="wave" height={15} style={{ marginBottom: 6 }} />
+                      <Skeleton animation="wave" height={15} width="80%" />
+                    </React.Fragment>) :
+                    questions[currentQuestionIndex]?.description}
                   </p>
 
                   <h2 className="font-bold my-4" data-id="problem-input-format-header">
@@ -154,7 +171,17 @@ export default function ProblemPage() {
                   </h2>
 
                   <p data-id="problem-input-format-sample">
-                    {questions[currentQuestionIndex]?.inputFormat}
+                    {loading ? 
+                        (
+                        <React.Fragment>
+                          <Skeleton animation="wave" height={15} style={{ marginBottom: 6 }} />
+                          <Skeleton animation="wave" height={15} style={{ marginBottom: 6 }} />
+                          <Skeleton animation="wave" height={15} style={{ marginBottom: 6 }} />
+                          <Skeleton animation="wave" height={15} width="80%" />
+                        </React.Fragment>
+                        )
+                       : 
+                      questions[currentQuestionIndex]?.inputFormat}
                   </p>
 
                   <h2 className="font-bold my-4" data-id="problem-example-header">
@@ -164,26 +191,41 @@ export default function ProblemPage() {
                   <h2 className="my-4" data-id="problem-input-header">
                     Input
                   </h2>
-
+                  
+                  {loading ?
+                  (<React.Fragment>
+                    <Skeleton animation="wave" height={15} width="80%" style={{ marginBottom: 6 }} />
+                    <Skeleton animation="wave" height={15} width="60%" />
+                  </React.Fragment>) :
                   <p className="text-gray-700 bg-sky-100 py-2 px-3 rounded border-solid border inline-block" data-id="problem-input-sample">
                     {questions[currentQuestionIndex]?.inputExample}
                   </p>
+                  }
 
                   <h2 className="my-4" data-id="problem-output-header">
                     Output
                   </h2>
-
-                  <p className="text-gray-700 bg-sky-100 py-2 px-3 rounded border-solid border inline-block" data-id="problem-output-sample">
-                    {questions[currentQuestionIndex]?.outputExample}
-                  </p>
+                  
+                  {loading ?
+                    (<React.Fragment>
+                      <Skeleton animation="wave" height={15} width="80%" style={{ marginBottom: 6 }} />
+                      <Skeleton animation="wave" height={15} width="60%" />
+                    </React.Fragment>) :
+                    <p className="text-gray-700 bg-sky-100 py-2 px-3 rounded border-solid border inline-block" data-id="problem-output-sample">
+                      {questions[currentQuestionIndex]?.outputExample}
+                    </p>
+                  }
                   
                   <h2 className="font-bold my-4" data-id="problem-constraints-header">
                     Constraints
                   </h2>
-
-
+                  
                   <p className="text-gray-700 mt-4" data-id="problem-constraints-sample">
-                    {questions[currentQuestionIndex]?.constraints}  
+                    {loading ? 
+                    (<React.Fragment>
+                      <Skeleton animation="wave" height={15} style={{ marginBottom: 6 }} />
+                      <Skeleton animation="wave" height={15} width="80%" />
+                    </React.Fragment>) : questions[currentQuestionIndex]?.constraints}
                   </p>
 
               </div>
@@ -191,19 +233,19 @@ export default function ProblemPage() {
 
             <div className="w-full" data-id="problem-right-screen">
               <div className="flex py-3 border-b border-b-gray-200" data-id="friend-tab">
-                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 hover:opacity-100">
+                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 truncate hover:opacity-100">
                     Me
                   </div>
-                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 hover:opacity-100">
+                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 truncate hover:opacity-100">
                     Friend #1
                   </div>
-                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 hover:opacity-100">
+                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 truncate hover:opacity-100">
                     Friend #2
                   </div>
-                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 hover:opacity-100">
+                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 truncate hover:opacity-100">
                     Friend #3
                   </div>
-                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 hover:opacity-100">
+                  <div className="bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 truncate hover:opacity-100">
                     Friend #4
                   </div>
               </div>
@@ -246,8 +288,10 @@ export default function ProblemPage() {
           </div>
         </div>
 
-        <div className="flex w-20 border-l border-l-gray-200" data-id="problem-right-sidebar">
-          {/* <ChatBubbleIcon/> */}
+        <div className="flex py-6 items-end justify-center w-20 border-l border-l-gray-200" data-id="problem-right-sidebar">
+          <IconButton className="align-auto hover:bg-emerald-100 my-1">
+            <ChatBubbleIcon className="fill-sky-500 m-1 hover:fill-sky-600"/>
+          </IconButton>  
         </div>
       </div>
   );
