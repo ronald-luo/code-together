@@ -10,7 +10,8 @@
       "outputExample": "0 1\n",
       "constraints": "2 ≤ n ≤ 10^5\n-10^9 ≤ nums[i] ≤ 10^9\n-10^9 ≤ target ≤ 10^9\nThe solution must be unique, and you cannot use the same element twice.",
       "createdAt": "2022-04-05T10:00:00Z",
-      "updatedAt": "2022-04-05T10:30:00Z"
+      "updatedAt": "2022-04-05T10:30:00Z",
+      "usedBy": ["Google", "Facebook", "Amazon", "Apple"]
     },
     {
       "id": 2,
@@ -23,7 +24,8 @@
       "outputExample": "8 0 7\n",
       "constraints": "The input lists are guaranteed not to have any leading zero, except the number 0 itself.",
       "createdAt": "2022-04-06T08:00:00Z",
-      "updatedAt": "2022-04-06T08:30:00Z"
+      "updatedAt": "2022-04-06T08:30:00Z",
+      "usedBy": ["Microsoft", "Apple", "Twitter", "Adobe"]
     },
     {
       "id": 3,
@@ -36,19 +38,21 @@
       "outputExample": "3\n",
       "constraints": "0 ≤ s.length ≤ 5 * 10^4\ns consists of printable ASCII characters.",
       "createdAt": "2022-04-07T09:00:00Z",
-      "updatedAt": "2022-04-07T09:30:00Z"
+      "updatedAt": "2022-04-07T09:30:00Z",
+      "usedBy": ["Netflix", "Uber", "Airbnb", "Amazon"]
     },
     {
         "id": 4,
         "title": "3Sum",
         "description": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i ≠ j, i ≠ k, and j",
-        "difficulty": "Hard",
+        "difficulty": "Medium",
         "inputFormat": "The first line contains an integer n, representing the size of the array. The second line contains n integers, representing the elements of the array.",
         "outputFormat": "Return a list of all the unique triplets [nums[i], nums[j], nums[k]] such that i ≠ j, i ≠ k, and j < k, and nums[i] + nums[j] + nums[k] = 0.",
         "inputExample": "6\n-1 0 1 2 -1 -4\n",
         "outputExample": "[[-1,-1,2],[-1,0,1]]\n",
         "constraints": "0 ≤ nums.length ≤ 3000\n-10^5 ≤ nums[i] ≤ 10^5",
         "createdAt": "2022-04-08T11:00:00Z",
-        "updatedAt": "2022-04-08T11:30:00Z"
+        "updatedAt": "2022-04-08T11:30:00Z",
+        "usedBy": ["Google", "Twitter", "Snapchat", "Dropbox"]
     }
 ]
