@@ -80,15 +80,15 @@ export default function ProfilePage() {
                         <div className="text-gray-400" data-id="profile-username">
                             @johndoe
                         </div>
-                        <div className="text-gray-400" data-id="profile-location">
+                        <div className="text-gray-400 my-2" data-id="profile-location">
                             San Francisco, CA
                         </div>
-                        <div className="text-gray-400 text-sm" data-id="profile-bio">
+                        <div className="text-gray-400 text-sm mt-3" data-id="profile-bio">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet lorem. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet lorem.
                         </div>
-                        <div>
+                        <Button className="bg-blue-200 text-blue-800 text-sm my-5 font-medium rounded-md py-2 px-4 my-auto opacity-80 hover:bg-blue-100 hover:opacity-100">
                             Edit Profile
-                        </div>
+                        </Button>
                     </div>
 
                     <div className="grow" data-id="profile-right">

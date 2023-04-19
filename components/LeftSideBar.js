@@ -14,7 +14,7 @@ import BookmarksIcon from '@mui/icons-material/Bookmarks';
 
 const LeftSidebar = () => {
   return (
-    <div className="flex flex-col h-screen w-24 border-r border-b-gray-200">
+    <div className="flex flex-col h-screen w-16 border-r border-b-gray-200">
       <div className="flex-1 flex flex-col items-center justify-center">
         {/* <p className="text-gray-500">Left Sidebar Content</p> */}
         <IconButton className="hover:bg-sky-100 my-1">

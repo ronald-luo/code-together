@@ -13,7 +13,7 @@ const Header = ({difficulties}) => {
   return (
     <header className="flex flex-row px-2 sm:px-4 lg:px-4 max-h-20 bg-white-800 py-3 justify-between border-b border-b-gray-200">       
         <div className="flex flex-row" data-id="left">
-          <IconButton className="mr-4">
+          <IconButton href="/" className="mr-4">
             <KeyboardBackspaceIcon/>
           </IconButton>
 
