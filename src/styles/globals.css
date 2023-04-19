@@ -13,4 +13,8 @@ body, #__next {
   overflow-x: hidden;
   min-height: 100vh;
   height: 100%;
+}
+
+.MuiBox-root {
+  width: 100%;
 }/*# sourceMappingURL=globals.css.map */
