@@ -6,6 +6,7 @@ import DifficultyChip from '../../components/DifficultyChip';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 
+
 // mui components
 import Chip from '@mui/material/Chip';
 import Tabs from '@mui/material/Tabs';
@@ -13,6 +14,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
+import Skeleton from '@mui/material/Skeleton';
 
 // mui icons
 import SchoolIcon from '@mui/icons-material/School';
@@ -20,6 +22,7 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import ArchitectureIcon from '@mui/icons-material/Architecture';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import SendIcon from '@mui/icons-material/Send';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -49,11 +52,28 @@ function a11yProps(index) {
 }
 
 export default function ProfilePage() {
+    const [loading, setLoading] = useState(true);
     const [value, setValue] = React.useState(0);
+    const [profile, setProfile] = useState({})
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
+
+    useEffect(() => {
+        async function fetchProfile() {
+            try {
+                const response = await fetch('/api/profile');
+                const data = await response.json();
+                setProfile(data)
+                setLoading(false)
+              } catch (error) {
+                  console.error('Failed to fetch profile data:', error);
+                throw error;
+              }
+        }
+        fetchProfile();
+      }, []);
 
     return (
         <div className="flex flex-row w-full h-full">
@@ -64,7 +84,7 @@ export default function ProfilePage() {
                     <a href="/" className="m-0 p-0 leading-none text-2xl self-center">
                         Code Together
                     </a>
-                    <Button className="font-bold px-6 text-white bg-blue-600 hover:bg-blue-500 capitalize">
+                    <Button className="bg-sky-600 text-white px-3 mx-1 my-auto hover:bg-sky-500" type="submit" color="primary">
                         New Lobby
                     </Button>
                 </div>
@@ -72,26 +92,26 @@ export default function ProfilePage() {
                 <div className="flex grow max-w-full" data-id="main-content">
                     <div className="p-5 w-1/4" data-id="profile-left-summary">
                         <div>
-                            <img src="https://avatars.githubusercontent.com/u/10101138?v=4" className="rounded-full w-20 h-20" data-id="profile-picture"></img>
+                            {loading ? <Skeleton className="mb-2" width={90} height={90} variant="circular" animation="wave"/> : <img src={profile?.picture} className="rounded-full w-20 h-20" data-id="profile-picture"></img>}
                         </div>
                         <div className="font-bold text-xl" data-id="profile-name">
-                            John Doe
+                            {loading ? <Skeleton className="mb-2" width="40%"  animation="wave"/> : profile?.name}
                         </div>
                         <div className="text-gray-400" data-id="profile-username">
-                            @johndoe
+                            {loading ? <Skeleton className="mb-2" width="90%"  animation="wave"/> :  '@' + profile?.username}
                         </div>
                         <div className="text-gray-400 my-2" data-id="profile-location">
-                            San Francisco, CA
+                            {loading ? <Skeleton className="mb-2" width="90%"  animation="wave"/> : profile?.location}
                         </div>
                         <div className="text-gray-400 text-sm mt-3" data-id="profile-bio">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet lorem. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet lorem.
+                            {loading ? <Skeleton className="mb-2" variant="rectangular" width="90%" height={90} animation="wave"/> : profile?.bio}
                         </div>
-                        <Button className="bg-blue-200 text-blue-800 text-sm my-5 font-medium rounded-md py-2 px-4 my-auto opacity-80 hover:bg-blue-100 hover:opacity-100">
-                            Edit Profile
+                        <Button className="bg-sky-200 text-sky-700 px-3 mt-3 my-auto" variant="outlined">
+                         Edit Profile
                         </Button>
                     </div>
 
-                    <div className="grow" data-id="profile-right">
+                    <div className="grow lg:max-w-lg" data-id="profile-right">
                         <Tabs className="flex items-stretch" value={value} onChange={handleChange}>
                             <Tab label="Overview" {...a11yProps(0)} />
                             <Tab label="History" {...a11yProps(1)} />
@@ -105,15 +125,15 @@ export default function ProfilePage() {
                                     <div className="grid gap-2 grid-cols-2">
                                         <Chip className="opacity-75 truncate font-bold bg-emerald-200 text-cyan-700 mr-2 max-w-4 self-center hover:opacity-100" label="easy"/>
                                         <div className="text-right">
-                                            0/10
+                                            {loading ? <Skeleton className="mb-2" width="90%" animation="wave"/> : profile?.progress[0].value}
                                         </div>
                                         <Chip className="opacity-75 truncate font-bold bg-orange-300 text-orange-700 mr-2 self-center hover:opacity-100" label="medium"/>
                                         <div className="text-right">
-                                            0/10
+                                            {loading ? <Skeleton className="mb-2" width="90%" animation="wave"/> : profile?.progress[1].value}
                                         </div>
                                         <Chip className="opacity-75 truncate font-bold bg-rose-300 text-rose-700 mr-2 self-center hover:opacity-100" label="hard"/>
                                         <div className="text-right">
-                                            0/10
+                                            {loading ? <Skeleton className="mb-2" width="90%" animation="wave"/> : profile?.progress[2].value}
                                         </div>
                                     </div>
                                 </div>
@@ -126,25 +146,25 @@ export default function ProfilePage() {
                                             <SchoolIcon/> Helpful
                                         </div>
                                         <div className="text-right">
-                                            0
+                                            {loading ? <Skeleton className="mb-2"  width="90%" animation="wave"/> : profile?.karma.helpful}
                                         </div>
                                         <div>
                                             <SentimentSatisfiedAltIcon/> Friendly
                                         </div>
                                         <div className="text-right">
-                                            0
+                                        {loading ? <Skeleton className="mb-2" width="90%" animation="wave"/> : profile?.karma.friendly}
                                         </div>
                                         <div>
                                             <ArchitectureIcon/> Skilled
                                         </div>
                                         <div className="text-right">
-                                            0
+                                        {loading ? <Skeleton className="mb-2" width="90%" animation="wave"/> : profile?.karma.skilled}
                                         </div>
                                         <div>
                                             <BarChartIcon/> Total
                                         </div>
                                         <div className="text-right">
-                                            0
+                                        {loading ? <Skeleton className="mb-2" width="90%" animation="wave"/> : profile?.karma.total}
                                         </div>
                                     </div>
                                 </div>
@@ -154,15 +174,11 @@ export default function ProfilePage() {
                                 <h2 className="font-medium mb-2">
                                     Calendar
                                 </h2>
-                                <CalendarHeatmap
-                                    gutterSize={3}
-                                    values={[
-                                        { date: '2023-01-01', count: 21 },
-                                        { date: '2023-01-22', count: 19 },
-                                        { date: '2023-01-30', count: 9 },
-                                        // ...and so on
-                                    ]}
-                                    classForValue={(value) => {
+                                {loading ? <Skeleton variant="rectangular" width="90%" height={120} animation="wave"/> :
+                                    <CalendarHeatmap
+                                        gutterSize={4}
+                                        values={profile?.calendar}
+                                        classForValue={(value) => {
                                         if (!value) {
                                             return 'color-empty';
                                         }
@@ -185,25 +201,34 @@ export default function ProfilePage() {
 
                                         return 'color-github-1';
 
-                                    }}
-                                />
+                                    }}/>
+                                }
+
                             </div>
                         </TabPanel>
                         <TabPanel className="flex grow justify-center w-full" value={value} index={1}>
-                            <Button className="flex flex-row w-full border-solid border-b border-b-slate-300 justify-between pt-3 pb-4 my-2 hover:cursor-pointer hover:bg-sky-100">
-                                <div>
-                                    <h2 className="ml-4 mb-2 text-lg font-medium capitalize text-left ">
-                                        Flight Itinerary
-                                    </h2>
-                                    <DifficultyChip difficulty="Easy"></DifficultyChip>
-                                    <span className="text-xs text-slate-500 lowercase">
-                                        3 minutes ago
-                                    </span>
-                                </div>
-                                <IconButton className="self-center w-10 h-10 mr-3">
-                                    <ChevronRightIcon/>
-                                </IconButton>
-                            </Button>                            
+                            {loading ? <Skeleton className="mt-5" variant="rectangular" width="90%" height={120} animation="wave"/> :
+                    
+                            profile?.history?.map((question) => {
+                                return (
+                                    <Button className="flex flex-row w-full border-solid border-b border-b-slate-300 justify-between pt-3 pb-4 my-2 hover:cursor-pointer hover:bg-sky-100">
+                                        <div className="grid grid-cols-2"> 
+                                            <h2 className="ml-4 mb-2 text-lg font-medium capitalize text-left ">
+                                                {question.title}
+                                            </h2>
+                                    
+                                            <DifficultyChip difficulty={question.difficulty}></DifficultyChip>
+                                            <span className="text-xs row-start-2 col-start-2 text-slate-500 lowercase self-center text-left">
+                                                {question.timeAgo}
+                                            </span>
+                                        </div>
+                                        <IconButton className="self-center w-10 h-10 mr-3">
+                                            <ChevronRightIcon/>
+                                        </IconButton>
+                                    </Button>
+                                )
+                            })
+                            }
                         </TabPanel>
                     </div>
                 </div>

@@ -1,0 +1,50 @@
+{
+    "name": "John Doe",
+    "username": "johndoe",
+    "location": "San Francisco, CA",
+    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet lorem. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nisl, eget aliquam nisl nisl sit amet lorem.",
+    "picture": "https://avatars.githubusercontent.com/u/10101138?v=4",
+    "progress": [
+      {
+        "label": "easy",
+        "value": "0/10"
+      },
+      {
+        "label": "medium",
+        "value": "0/10"
+      },
+      {
+        "label": "hard",
+        "value": "0/10"
+      }
+    ],
+    "karma": {
+      "helpful": 0,
+      "friendly": 0,
+      "skilled": 0,
+      "total": 0
+    },
+    "calendar": [
+      { "date": "2023-01-01", "count": 21 },
+      { "date": "2023-01-22", "count": 19 },
+      { "date": "2023-01-30", "count": 9 }
+    ],
+    "history": [
+      {
+        "title": "Flight Itinerary",
+        "difficulty": "Easy",
+        "timeAgo": "3 minutes ago"
+      },
+      {
+        "title": "React Tutorial",
+        "difficulty": "Medium",
+        "timeAgo": "1 hour ago"
+      },
+      {
+        "title": "Node.js Workshop",
+        "difficulty": "Hard",
+        "timeAgo": "1 day ago"
+      }
+    ]
+  }
+  
