@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+
+// components
 import LeftSidebar from '../../components/LeftSideBar';
 import DifficultyChip from '../../components/DifficultyChip';
+import Header from '../../components/StandardHeader';
 
 // heatmap
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
-
 
 // mui components
 import Chip from '@mui/material/Chip';
@@ -80,14 +82,7 @@ export default function ProfilePage() {
             <LeftSidebar></LeftSidebar>
 
             <div className="flex flex-col w-full h-full" data-id="main-container">
-                <div className="flex flex-row px-2 font-bold sm:px-4 lg:px-4 max-h-20 bg-white-800 py-3 justify-between border-b border-b-gray-200" data-id="header">
-                    <a href="/" className="m-0 p-0 leading-none text-2xl self-center">
-                        Code Together
-                    </a>
-                    <Button className="bg-sky-600 text-white px-3 mx-1 my-auto hover:bg-sky-500" type="submit" color="primary">
-                        New Lobby
-                    </Button>
-                </div>
+                <Header/>
 
                 <div className="flex grow max-w-full" data-id="main-content">
                     <div className="p-5 w-1/4" data-id="profile-left-summary">

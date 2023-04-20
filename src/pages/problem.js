@@ -25,7 +25,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import SendIcon from '@mui/icons-material/Send';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+
 
 
 
@@ -35,7 +35,7 @@ export default function ProblemPage() {
   const [loading, setLoading] = useState(true);
   const [code, setCode] = useState('');
   const [codeOutput, setCodeOutput] = useState('');
-  const [language, setLanguage] = useState('python'); // default value is Python
+  const [language, setLanguage] = useState('python');
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [allDifficulties, setAllDifficulties] = useState([]);
@@ -151,8 +151,8 @@ export default function ProblemPage() {
           <Header difficulties={allDifficulties}></Header>
 
           <div className="flex h-screen" ref={leftContainerRef} data-id="problem-screen-split-container">
-            <div className="grow w-1/2 border-r border-r-gray-200 max-w-full" data-id="problem-left-screen">
-              <div className="flex border-b py-3 border-b-gray-200" data-id="problem-tab-selector">
+            <div className="grow w-1/2 max-w-full border-r border-r-gray-200" data-id="problem-left-screen">
+              <div className="flex border-b py-3" data-id="problem-tab-selector">
                 <div className="truncate bg-blue-200 text-blue-800 text-sm font-medium rounded-md py-1 px-3 my-auto mx-1 ml-5 opacity-80 hover:opacity-100">
                   Problem
                 </div>
@@ -167,7 +167,7 @@ export default function ProblemPage() {
               <div className="px-3 pt-3" data-id="problem-information-container">
                   {loading ? (<Skeleton className="mb-2" width="90%"  animation="wave"/>) :
                   <div className="flex flex-rows mb-2" data-id="problem-title-container">
-                      <h2 className="text-xl font-bold truncate max-w-l" data-id="problem-title">
+                      <h2 className="text-xl font-bold truncate max-w-l mr-2" data-id="problem-title">
                         {questions[currentQuestionIndex]?.title}
                       </h2>
 

@@ -95,6 +95,10 @@ body, #__next {
   width: 100%;
 }
 
+.MuiToolbar-root {
+  justify-content: space-between;
+}
+
 // body {
 //   color: rgb(var(--foreground-rgb));
 //   background: linear-gradient(

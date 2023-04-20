@@ -21,7 +21,7 @@ const Header = ({difficulties}) => {
             Array of Hope
           </h1>
 
-          <div className="self-center truncate mx-3">
+          <div className="flex flex-row justify-between truncate mx-3 w-36">
             {difficulties.map((difficulty, index) => {
               return (
                 <DifficultyChip key={index} difficulty={difficulty}/>

@@ -17,4 +17,8 @@ body, #__next {
 
 .MuiBox-root {
   width: 100%;
+}
+
+.MuiToolbar-root {
+  justify-content: space-between;
 }/*# sourceMappingURL=globals.css.map */
